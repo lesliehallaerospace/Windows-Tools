@@ -7,6 +7,8 @@ from datetime import datetime
 import pyautogui
 
 pyautogui.FAILSAFE = False
+min_rand_low = random.randint(1, 29)
+min_rand_high = random.randint(30, 59)
 
 def open_teams():
     """Function to open Microsoft Teams."""
@@ -46,10 +48,10 @@ def check_teams():
         print("Checking")
         # Check if it's a weekday and current time is between 9 AM and 6 PM
         if now.weekday() < 5:  # 0-4: Monday to Friday
-            if now.hour == 9 and now.minute == 8:
+            if now.hour == 8 and now.minute == min_rand_high:
                 open_teams()
                 time.sleep(60)  # Wait 60 seconds to avoid multiple openings within the same minute
-            elif now.hour == 18 and now.minute == 12:
+            elif now.hour == 18 and now.minute == min_rand_low:
                 close_teams()
                 time.sleep(60)  # Wait 60 seconds to avoid multiple closings within the same minute
 
